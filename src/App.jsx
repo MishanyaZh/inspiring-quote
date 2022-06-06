@@ -12,11 +12,11 @@ export default App;
 
 const RANDOM_QUOTE_QUERY = gql`
   query getRandomQuote {
-    randomQuote {
+    randomMovieQuote
+    randomQuoteTheDay {
       text
       author
     }
-    greetingCat
   }
 `;
 
@@ -34,29 +34,33 @@ function RandomQuote(params) {
   if (error) {
     return "Could not load quote!";
   }
-  const { text, author } = data.randomQuote;
-  const cat = data.greetingCat;
+  const { text, author } = data.randomQuoteTheDay;
+  const MovieQuote = data.randomMovieQuote;
 
   return (
     <>
-      <Quote text={text} author={author} cat={cat} />
+      <Quote text={text} author={author} MovieQuote={MovieQuote} />
       <button
         onClick={() => {
           refetch();
         }}
       >
-        Get quote
+        Get Movie Quote
       </button>
     </>
   );
 }
 
-function Quote({ text, author, cat }) {
+function Quote({ text, author, MovieQuote }) {
   return (
-    <div>
-      <div>{text}</div>
-      <div>{author}</div>
-      <div>{cat}</div>
-    </div>
+    <>
+      <div>
+        <h2>Quote The Day</h2>
+        <p>'{text}'</p>
+        <p>-{author}</p>
+      </div>
+      <h2>Random Movie Quote</h2>
+      <div>'{MovieQuote}'</div>
+    </>
   );
 }
