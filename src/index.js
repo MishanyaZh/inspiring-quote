@@ -15,6 +15,7 @@ const client = new ApolloClient({
   link: new HttpLink({
     uri: URL,
   }),
+  queryDeduplication: false,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
