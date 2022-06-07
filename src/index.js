@@ -7,18 +7,19 @@ import App from "./conponents/App";
 import {
   ApolloClient,
   InMemoryCache,
-  HttpLink,
+  // HttpLink,
   ApolloProvider,
 } from "@apollo/client";
 
-const URL = "https://young-savannah-06405.herokuapp.com/";
+const GRAPHQL_ENDPOINT = "https://young-savannah-06405.herokuapp.com/";
 
+const cache = new InMemoryCache({
+  addTypename: false,
+  resultCaching: false,
+});
 const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: URL,
-  }),
-  queryDeduplication: false,
+  uri: GRAPHQL_ENDPOINT,
+  cache,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

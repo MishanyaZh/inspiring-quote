@@ -1,9 +1,9 @@
-import RandomQuote from "./RandomQuote";
+import AuthorsPage from "../pges/AuthorsPage";
 
 function App() {
   return (
     <div className="App">
-      <RandomQuote />
+      <AuthorsPage />
     </div>
   );
 }
