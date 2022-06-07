@@ -11,6 +11,13 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { orange } from "@mui/material/colors";
+const theme = createTheme({
+  status: {
+    danger: orange[500],
+  },
+});
 const GRAPHQL_ENDPOINT = "https://young-savannah-06405.herokuapp.com/";
 
 const cache = new InMemoryCache({
@@ -26,7 +33,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
