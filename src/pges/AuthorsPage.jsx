@@ -1,16 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Author from "../conponents/Author/Author";
 
-const ALL_AUTHORS_QUERY = gql`
-  query AllAuthors {
-    authors {
-      name
-      photo {
-        url
-      }
-    }
-  }
-`;
+import { ALL_AUTHORS_QUERY } from "../common/querys";
 
 const AuthorsPage = () => {
   const { loading, error, data } = useQuery(ALL_AUTHORS_QUERY);

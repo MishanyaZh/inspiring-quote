@@ -5,14 +5,9 @@ import "./index.css";
 
 import App from "./conponents/App";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  // HttpLink,
-  ApolloProvider,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { orange } from "@mui/material/colors";
 const theme = createTheme({
   status: {

@@ -1,20 +1,8 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import User from "../conponents/User/User";
 
-const ALL_USERS_QUERY = gql`
-  query AllUsers {
-    users {
-      name
-      avatar {
-        image {
-          url
-        }
-        color
-      }
-    }
-  }
-`;
+import { ALL_USERS_QUERY } from "../common/querys";
 
 function UsersPage() {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);
