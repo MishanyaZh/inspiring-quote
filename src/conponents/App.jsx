@@ -1,20 +1,24 @@
-import { Routes, Route, NavLink as RouterLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import HomePage from "../pges/HomePage";
 import AuthorsPage from "../pges/AuthorsPage";
 import UsersPage from "../pges/UsersPage";
 import BooksPage from "../pges/BooksPage";
 import Navigation from "./Navigation/Navigation";
+import Link from "./Link";
 
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
+
+import AnythingDetailsPage from "../pges/AnythingDetailsPage";
+import EverythingPage from "../pges/EverythingPage";
+import BookDetailsPage from "../pges/BookDetailsPage";
 
 function App() {
   return (
     <Container>
-      <Link to="/" as={RouterLink} underline="none" color="inherit">
+      <Link to="/" underline="none" color="inherit">
         <Typography variant="h2" component="h2" m={2} textAlign="center">
           Personal Library
         </Typography>
@@ -34,9 +38,16 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="books/" element={<BooksPage />} />
+          <Route path="books/:bookId" element={<BookDetailsPage />} />
+          {/* <Route path="books/" element={<BooksPage />} /> */}
           <Route path="authors/" element={<AuthorsPage />} />
           <Route path="users/" element={<UsersPage />} />
+
+          <Route
+            path="admin/anything/:anyId"
+            element={<AnythingDetailsPage />}
+          />
+          <Route path="admin/everything" element={<EverythingPage />} />
         </Routes>
       </Box>
     </Container>

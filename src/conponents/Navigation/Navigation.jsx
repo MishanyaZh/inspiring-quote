@@ -1,32 +1,32 @@
 import React from "react";
-import { NavLink as RouterLink } from "react-router-dom";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 import styled from "@emotion/styled";
 
+import Link from "../Link";
+
 const Navigation = () => {
   return (
     <>
       <Box sx={{ textAlign: "center" }}>
-        <Link to="/books" as={RouterLink} underline="none" color="inherit">
+        <Link to="/books" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Books"
             icon={<MenuBookIcon />}
           />
         </Link>
-        <Link to="/authors" as={RouterLink} underline="none" color="inherit">
+        <Link to="/authors" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Authors"
             icon={<EmojiObjectsIcon />}
           />
         </Link>
-        <Link to="/users" as={RouterLink} underline="none" color="inherit">
+        <Link to="/users" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Users"
