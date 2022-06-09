@@ -1,4 +1,4 @@
-import Link from "./Link";
+import Link from "../Link";
 import { gql } from "@apollo/client";
 import { Box, Typography } from "@mui/material";
 
@@ -19,27 +19,25 @@ export const BOOK_DETAILS_FIELDS_FRAGMENT = gql`
 
 const BookDetails = ({ book }) => {
   return (
-    <Box m="3" direction="column" align="center">
-      <Typography as="h2" size="lg" color="gray.700" my="3">
+    <>
+      <Typography variant="h4" color="gray" mb={1}>
         {book.title}
       </Typography>
 
-      <Box as="article">
+      <Box>
         <img
+          style={{ objectFit: "cover" }}
           src={book.cover.url}
-          objectFit="cover"
-          width="40%"
-          float="left"
           mr="3"
           alt="#"
         />
-        <Typography as="h4" size="sm">
+        <Typography variant="h4">
           Written by
           <Link to={`/authors/${book.author.id}`}>{book.author.name}</Link>
         </Typography>
-        <Box as="article">{book.description}</Box>
+        <Box>{book.description}</Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

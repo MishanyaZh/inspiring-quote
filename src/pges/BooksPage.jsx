@@ -13,7 +13,6 @@ const BooksPage = () => {
     return <p>Could not load books</p>;
   }
   const { books } = data;
-  console.log(books);
 
   return (
     <>
@@ -21,7 +20,7 @@ const BooksPage = () => {
         <p>Loading...</p>
       ) : (
         books.map((book) => (
-          <Link key={book.title} to={`/books/${book.id}`}>
+          <Link key={book.id} to={`/books/${book.id}`}>
             <Book {...book} />
           </Link>
         ))

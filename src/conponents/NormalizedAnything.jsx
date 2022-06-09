@@ -15,7 +15,7 @@ const NormalizedAnything = ({ normalizedAnything }) => {
     <Stack
       w="100%"
       my={3}
-      bg={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
+      // bg={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
       p={3}
       overflow="hidden"
       rounded={5}

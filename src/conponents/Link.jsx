@@ -3,7 +3,9 @@ import { NavLink as RouterLink } from "react-router-dom";
 // import  {CustomLink as Link}  from "@mui/material/Link";
 
 const Link = (props) => {
-  return <CustomLink as={RouterLink} {...props} />;
+  return (
+    <CustomLink underline="none" color="inherit" as={RouterLink} {...props} />
+  );
 };
 
 export default Link;

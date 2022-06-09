@@ -1,14 +1,28 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+
+import BookDetails from "../conponents/Book/BookDetails";
+
+import { GET_BOOK_QUERY } from "../common/querys";
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
-  console.log(bookId);
+  const { loading, error, data } = useQuery(GET_BOOK_QUERY, {
+    variables: { bookId },
+  });
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>Could not load book "{bookId}"</p>;
+  }
+  const { book } = data;
   return (
-    <Box>
-      <p>Book {bookId} details page</p>
-    </Box>
+    <>
+      <BookDetails book={book} />
+    </>
   );
 };
 

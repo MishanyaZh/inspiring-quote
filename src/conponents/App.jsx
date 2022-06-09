@@ -18,7 +18,7 @@ import BookDetailsPage from "../pges/BookDetailsPage";
 function App() {
   return (
     <Container>
-      <Link to="/" underline="none" color="inherit">
+      <Link to="/">
         <Typography variant="h2" component="h2" m={2} textAlign="center">
           Personal Library
         </Typography>
