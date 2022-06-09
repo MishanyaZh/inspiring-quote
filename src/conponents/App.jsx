@@ -39,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="books/:bookId" element={<BookDetailsPage />} />
-          {/* <Route path="books/" element={<BooksPage />} /> */}
+          <Route path="books/" element={<BooksPage />} />
           <Route path="authors/" element={<AuthorsPage />} />
           <Route path="users/" element={<UsersPage />} />
 

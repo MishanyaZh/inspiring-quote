@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 const BookDetailsPage = () => {
-  let { bookId } = useParams();
+  const { bookId } = useParams();
   console.log(bookId);
   return (
     <Box>

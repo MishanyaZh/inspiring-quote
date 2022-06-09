@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import Book from "../conponents/Book/Book";
+import Link from "../conponents/Link";
 
 import { GET_ALL_BOOKS_QUERY } from "../common/querys";
 
@@ -12,14 +13,20 @@ const BooksPage = () => {
     return <p>Could not load books</p>;
   }
   const { books } = data;
+  console.log(books);
 
   return (
     <>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        books.map((book) => <Book key={book.title} {...book} />)
+        books.map((book) => (
+          <Link key={book.title} to={`/books/${book.id}`}>
+            <Book {...book} />
+          </Link>
+        ))
       )}
+      ;
     </>
   );
 };

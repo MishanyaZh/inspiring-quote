@@ -15,8 +15,9 @@ export const ALL_USERS_QUERY = gql`
 `;
 
 export const GET_ALL_BOOKS_QUERY = gql`
-  query GetAllBooks {
+  query GetBooks {
     books {
+      id
       title
       cover {
         url
