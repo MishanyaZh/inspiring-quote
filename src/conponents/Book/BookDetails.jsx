@@ -31,10 +31,11 @@ const BookDetails = ({ book }) => {
           mr="3"
           alt="#"
         />
-        <Typography variant="h4">
-          Written by
-          <Link to={`/authors/${book.author.id}`}>{book.author.name}</Link>
-        </Typography>
+        <Link to={`/authors/${book.author.id}`}>
+          <Typography variant="h4" color="gray">
+            Written by: {book.author.name}
+          </Typography>
+        </Link>
         <Box>{book.description}</Box>
       </Box>
     </>

@@ -16,7 +16,7 @@ const AuthorDetails = ({ author }) => {
           src={author.photo.url}
           alt={author.name}
         />
-        <Box>{author.bio}</Box>
+        <Box m={1}>{author.bio}</Box>
       </Box>
       <Typography variant="h4" color="gray">
         Books

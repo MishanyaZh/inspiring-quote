@@ -10,7 +10,7 @@ const Book = ({ id, title, cover, author }) => {
       justifyContent="flex-end"
       border="1px solid grey"
       borderRadius={"5px"}
-      bgcolor={"brown"}
+      bgcolor={"#ae8452"}
       width={"200px"}
       height={"350px"}
     >
@@ -26,7 +26,7 @@ const Book = ({ id, title, cover, author }) => {
         src={cover.url}
         alt={title}
       />
-      <Typography variant="h6" component="h6" mb={1}>
+      <Typography variant="h6" component="h6" m={1}>
         {author.name}
       </Typography>
     </Box>
