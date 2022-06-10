@@ -58,3 +58,42 @@ export const GET_BOOK_QUERY = gql`
     }
   }
 `;
+
+export const GET_AUTHOR_QUERY = gql`
+  query GetAuthor($authorId: ID!) {
+    author(id: $authorId) {
+      id
+      name
+      photo {
+        url
+      }
+      bio
+      books {
+        title
+        id
+        description
+        cover {
+          url
+        }
+        author {
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const USERS_QUERY = gql`
+  query GetUser {
+    user(id: $userId) {
+      id
+      name
+      avatar {
+        image {
+          url
+        }
+        color
+      }
+    }
+  }
+`;

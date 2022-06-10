@@ -1,7 +1,8 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-const Author = ({ author }) => {
+const Author = ({ id, name, photo }) => {
+  console.log(photo);
   return (
     <Box
       m={2}
@@ -16,11 +17,11 @@ const Author = ({ author }) => {
           height: "200px",
           objectFit: "cover",
         }}
-        src={author.photo.url}
-        alt={author.name}
+        src={photo.url}
+        alt={name}
       />
       <Typography variant="h6" component="h6" mb={1}>
-        {author.name}
+        {name}
       </Typography>
     </Box>
   );

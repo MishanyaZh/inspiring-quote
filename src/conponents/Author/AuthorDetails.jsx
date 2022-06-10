@@ -3,30 +3,40 @@ import Book from "../Book/Book";
 import { Box, Typography } from "@mui/material";
 
 const AuthorDetails = ({ author }) => {
+  console.log(author);
   return (
-    <Box m="3" overflow="hidden" direction="column" align="center">
-      <Typography as="h2" size="lg" color="gray.700" my="3">
+    <Box overflow="hidden" direction="column" align="center">
+      <Typography variant="h4" color="gray" m={1}>
         {author.name}
       </Typography>
       <Box as="article">
         <img
           width={"40%"}
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
           src={author.photo.url}
-          float="left"
-          mr="3"
-          alt="#"
+          alt={author.name}
         />
-        <Box as="article">{author.bio}</Box>
+        <Box>{author.bio}</Box>
       </Box>
-      <Typography as="h3" size="sm">
+      <Typography variant="h4" color="gray">
         Books
       </Typography>
-      {author.books.map((book) => (
-        <Link to={`/books/${book.id}`} key={book.id} w="100%">
-          <Book {...book} author={author} />
-        </Link>
-      ))}
+      <Box
+        sx={{
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {author.books.map((book) => (
+          <Link to={`/books/${book.id}`} key={book.id} w="100%">
+            <Book {...book} />
+          </Link>
+        ))}
+      </Box>
     </Box>
   );
 };
