@@ -11,10 +11,11 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+import AuthorDetailsPage from "../pges/AuthorDetailsPage";
+import BookDetailsPage from "../pges/BookDetailsPage";
+import UserDetailsPage from "../pges/UserDetailsPage";
 import AnythingDetailsPage from "../pges/AnythingDetailsPage";
 import EverythingPage from "../pges/EverythingPage";
-import BookDetailsPage from "../pges/BookDetailsPage";
-import AuthorDetailsPage from "../pges/AuthorDetailsPage";
 
 function App() {
   return (
@@ -39,11 +40,15 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="books/:bookId" element={<BookDetailsPage />} />
-          <Route path="authors/:authorId" element={<AuthorDetailsPage />} />
+
           <Route path="books/" element={<BooksPage />} />
+          <Route path="books/:bookId" element={<BookDetailsPage />} />
+
           <Route path="authors/" element={<AuthorsPage />} />
+          <Route path="authors/:authorId" element={<AuthorDetailsPage />} />
+
           <Route path="users/" element={<UsersPage />} />
+          <Route path="users/:userId" element={<UserDetailsPage />} />
 
           <Route
             path="admin/anything/:anyId"

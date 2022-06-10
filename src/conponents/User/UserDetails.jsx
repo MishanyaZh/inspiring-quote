@@ -3,8 +3,14 @@ import Box from "@mui/material/Box";
 
 const UserDetails = ({ user }) => {
   return (
-    <Box alignItems="center">
-      <Box alignItems="center" direction="column" w="100%" mt="5">
+    <Box alignItems="center" display={"flex"}>
+      <Box
+        m={2}
+        border={"1px solid grey"}
+        borderRadius={"5px"}
+        bgcolor={user.avatar.color}
+        width={"200px"}
+      >
         <img
           style={{
             width: "200px",
@@ -18,7 +24,12 @@ const UserDetails = ({ user }) => {
           {user.name}
         </Typography>
       </Box>
-      <Box as="article">{user.info}</Box>
+      <Box display={"flex"} flexDirection={"column"}>
+        <Typography mb={1} component="span">
+          email: {user.email}
+        </Typography>
+        <Typography>{user.info}</Typography>
+      </Box>
     </Box>
   );
 };

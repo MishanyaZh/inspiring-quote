@@ -1,6 +1,6 @@
-import React from "react";
 import { useQuery } from "@apollo/client";
 import User from "../conponents/User/User";
+import Link from "../conponents/Link";
 
 import { ALL_USERS_QUERY } from "../common/querys";
 
@@ -19,7 +19,11 @@ function UsersPage() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        users.map((user) => <User key={user.name} user={user} />)
+        users.map((user) => (
+          <Link key={user.id} to={`/users/${user.id}`}>
+            <User user={user} />
+          </Link>
+        ))
       )}
     </>
   );

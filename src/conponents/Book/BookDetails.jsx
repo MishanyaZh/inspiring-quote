@@ -29,14 +29,20 @@ const BookDetails = ({ book }) => {
           style={{ objectFit: "cover" }}
           src={book.cover.url}
           mr="3"
-          alt="#"
+          alt={book.title}
         />
+        <Typography variant="h6">Written by:</Typography>
         <Link to={`/authors/${book.author.id}`}>
-          <Typography variant="h4" color="gray">
-            Written by: {book.author.name}
+          <Typography
+            borderRadius={"50%"}
+            bgcolor={"#def2f8"}
+            variant="h4"
+            color="gray"
+          >
+            {book.author.name}
           </Typography>
         </Link>
-        <Box>{book.description}</Box>
+        <Box m={1}>{book.description}</Box>
       </Box>
     </>
   );

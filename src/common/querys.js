@@ -84,10 +84,12 @@ export const GET_AUTHOR_QUERY = gql`
 `;
 
 export const USERS_QUERY = gql`
-  query GetUser {
+  query GetUser($userId: ID!) {
     user(id: $userId) {
       id
       name
+      email
+      info
       avatar {
         image {
           url
