@@ -15,19 +15,26 @@ export const ALL_USERS_QUERY = gql`
   }
 `;
 
+const BOOK_FIELDS_FRAGMENT = gql`
+  fragment bookFields on Book {
+    id
+    title
+    cover {
+      url
+    }
+    author {
+      name
+    }
+  }
+`;
 export const GET_ALL_BOOKS_QUERY = gql`
   query GetBooks {
     books {
-      id
-      title
-      cover {
-        url
-      }
-      author {
-        name
-      }
+      __typename
+      ...bookFields
     }
   }
+  ${BOOK_FIELDS_FRAGMENT}
 `;
 
 export const ALL_AUTHORS_QUERY = gql`
@@ -64,23 +71,17 @@ export const GET_AUTHOR_QUERY = gql`
     author(id: $authorId) {
       id
       name
+      bio
       photo {
         url
       }
-      bio
       books {
-        title
-        id
-        description
-        cover {
-          url
-        }
-        author {
-          name
-        }
+        __typename
+        ...bookFields
       }
     }
   }
+  ${BOOK_FIELDS_FRAGMENT}
 `;
 
 export const USERS_QUERY = gql`
