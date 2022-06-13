@@ -1,8 +1,16 @@
-import { useQuery } from "@apollo/client";
-import Book from "../conponents/Book/Book";
+import { gql, useQuery } from "@apollo/client";
+import Book, { BOOK_FIELDS_FRAGMENT } from "../conponents/Book/Book";
 import Link from "../conponents/Link";
 
-import { GET_ALL_BOOKS_QUERY } from "../common/querys";
+export const GET_ALL_BOOKS_QUERY = gql`
+  query GetBooks {
+    books {
+      __typename
+      ...bookFields
+    }
+  }
+  ${BOOK_FIELDS_FRAGMENT}
+`;
 
 const BooksPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_BOOKS_QUERY);

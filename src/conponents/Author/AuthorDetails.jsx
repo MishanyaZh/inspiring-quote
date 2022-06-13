@@ -1,6 +1,22 @@
 import Link from "../Link";
-import Book from "../Book/Book";
+import Book, { BOOK_FIELDS_FRAGMENT } from "../Book/Book";
 import { Box, Typography } from "@mui/material";
+import { gql } from "@apollo/client";
+
+export const AUTHOR_DETAILS_FIELDS_FRAGMENT = gql`
+  fragment authorDetailsFields on Author {
+    id
+    name
+    bio
+    photo {
+      url
+    }
+    books {
+      ...bookFields
+    }
+  }
+  ${BOOK_FIELDS_FRAGMENT}
+`;
 
 const AuthorDetails = ({ author }) => {
   console.log(author);

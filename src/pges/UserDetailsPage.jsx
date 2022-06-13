@@ -1,8 +1,24 @@
 import { useParams } from "react-router";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 import UserDetails from "../conponents/User/UserDetails";
-import { USERS_QUERY } from "../common/querys";
+
+export const USERS_QUERY = gql`
+  query GetUser($userId: ID!) {
+    user(id: $userId) {
+      id
+      name
+      email
+      info
+      avatar {
+        image {
+          url
+        }
+        color
+      }
+    }
+  }
+`;
 
 const UserDetailsPage = () => {
   const { userId } = useParams();

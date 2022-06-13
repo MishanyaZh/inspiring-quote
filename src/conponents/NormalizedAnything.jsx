@@ -13,9 +13,9 @@ const COLORS_BY_TYPENAME = {
 const NormalizedAnything = ({ normalizedAnything }) => {
   return (
     <Stack
-      w="100%"
-      my={3}
-      // bg={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
+      width="100%"
+      m={3}
+      bgcolor={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
       p={3}
       overflow="hidden"
       rounded={5}
@@ -29,15 +29,14 @@ const NormalizedAnything = ({ normalizedAnything }) => {
           alt="#"
         />
         <Stack>
-          <Typography as="h4" size="sm">
+          <Typography variant="h4" size="sm">
             {normalizedAnything.__typename}
           </Typography>
-          <Typography as="h3" size="md">
+          <Typography variant="h3" size="md">
             {normalizedAnything.name}
           </Typography>
           <Box
-            as="article"
-            w="300px"
+            width="300px"
             whiteSpace="nowrap"
             overflow="hidden"
             textOverflow="ellipsis"

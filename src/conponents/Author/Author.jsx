@@ -1,5 +1,16 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { gql } from "@apollo/client";
+
+export const AUTHORS_FIELDS_FRAGMENT = gql`
+  fragment authorsFields on Author {
+    id
+    name
+    photo {
+      url
+    }
+  }
+`;
 
 const Author = ({ id, name, photo }) => {
   console.log(photo);

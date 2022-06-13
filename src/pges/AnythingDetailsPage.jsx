@@ -1,15 +1,19 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
 import { useParams } from "react-router";
-import AnythingDetails from "../conponents/AnythingDetails";
+
+import { gql, useQuery } from "@apollo/client";
+import AnythingDetails, {
+  ANYTHING_DETAILS_FIELDS_FRAGMENT,
+} from "../conponents/AnythingDetails";
+
 import { Box, Typography } from "@mui/material";
 
 const GET_ANYTHING_QUERY = gql`
   query GetAnything($anyId: ID!) {
     anything(id: $anyId) {
-      __typename
+      ...anythingDetailsFields
     }
   }
+  ${ANYTHING_DETAILS_FIELDS_FRAGMENT}
 `;
 
 const AnythingDetailsPage = () => {
@@ -25,11 +29,10 @@ const AnythingDetailsPage = () => {
   }
 
   const { anything } = data;
-  console.log(anything);
 
   return (
-    <Box w="100%" bg="red.100">
-      <Typography textAlign="center" color="red.500">
+    <Box w="100%" bgcolor="pink">
+      <Typography textAlign="center" variant="h3" color="red">
         Warning! Admin area!
       </Typography>
       <AnythingDetails anything={anything} />

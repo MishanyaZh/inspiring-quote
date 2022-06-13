@@ -1,8 +1,17 @@
-import { useQuery } from "@apollo/client";
 import User from "../conponents/User/User";
 import Link from "../conponents/Link";
 
-import { ALL_USERS_QUERY } from "../common/querys";
+import { gql, useQuery } from "@apollo/client";
+import { USER_FIELDS_FRAGMENT } from "../conponents/User/User";
+
+const ALL_USERS_QUERY = gql`
+  query AllUsers {
+    users {
+      ...userFieldsFragment
+    }
+  }
+  ${USER_FIELDS_FRAGMENT}
+`;
 
 function UsersPage() {
   const { loading, error, data } = useQuery(ALL_USERS_QUERY);

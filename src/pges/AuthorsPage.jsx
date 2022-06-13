@@ -1,11 +1,18 @@
-import { useQuery } from "@apollo/client";
-import Author from "../conponents/Author/Author";
+import { gql, useQuery } from "@apollo/client";
+import Author, { AUTHORS_FIELDS_FRAGMENT } from "../conponents/Author/Author";
 import Link from "../conponents/Link";
 
-import { ALL_AUTHORS_QUERY } from "../common/querys";
+const GET_AUTHORS_QUERY = gql`
+  query GetAuthors {
+    authors {
+      ...authorsFields
+    }
+  }
+  ${AUTHORS_FIELDS_FRAGMENT}
+`;
 
 const AuthorsPage = () => {
-  const { loading, error, data } = useQuery(ALL_AUTHORS_QUERY);
+  const { loading, error, data } = useQuery(GET_AUTHORS_QUERY);
   if (loading) {
     return <p>Loading...</p>;
   }

@@ -19,6 +19,9 @@ const GRAPHQL_ENDPOINT = "https://young-savannah-06405.herokuapp.com/";
 const cache = new InMemoryCache({
   addTypename: true,
   resultCaching: false,
+  possibleTypes: {
+    Anything: ["Book", "Author", "User"],
+  },
 });
 const client = new ApolloClient({
   uri: GRAPHQL_ENDPOINT,
