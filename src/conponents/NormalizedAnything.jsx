@@ -3,17 +3,20 @@ import { Box, Stack, Typography } from "@mui/material";
 
 export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
   fragment normalizedAnythingFields on Anything {
+    ... on Book {
+      title
+    }
     ... on Author {
+      name
+    }
+    ... on User {
       name
     }
   }
 `;
 
 const COLORS_BY_TYPENAME = {
-  //   Book: "red.200",
-  //   Author: "green.200",
-  //   User: "blue.200",
-  Book: "red",
+  Book: "tomato",
   Author: "green",
   User: "blue",
 };
