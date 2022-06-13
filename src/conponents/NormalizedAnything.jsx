@@ -1,5 +1,13 @@
+import { gql } from "@apollo/client";
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+
+export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
+  fragment normalizedAnythingFields on Anything {
+    ... on Author {
+      name
+    }
+  }
+`;
 
 const COLORS_BY_TYPENAME = {
   //   Book: "red.200",

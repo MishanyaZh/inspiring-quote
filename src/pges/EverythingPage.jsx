@@ -1,14 +1,17 @@
 import { gql, useQuery } from "@apollo/client";
 import { Box, Typography } from "@mui/material";
 
-import NormalizedAnything from "../conponents/NormalizedAnything";
+import NormalizedAnything, {
+  NORMALIZED_ANYTHING_FIELDS_FRAGMENT,
+} from "../conponents/NormalizedAnything";
 
 const GET_EVERYTHING_QUERY = gql`
   query GetEverything {
     everything {
-      __typename
+      ...normalizedAnythingFields
     }
   }
+  ${NORMALIZED_ANYTHING_FIELDS_FRAGMENT}
 `;
 
 const EverythingPage = () => {
