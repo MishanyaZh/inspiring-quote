@@ -38,6 +38,7 @@ const BookDetails = ({ book }) => {
             bgcolor={"#def2f8"}
             variant="h4"
             color="gray"
+            style={{ textDecoration: "underline" }}
           >
             {book.author.name}
           </Typography>

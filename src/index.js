@@ -17,7 +17,7 @@ const theme = createTheme({
 const GRAPHQL_ENDPOINT = "https://young-savannah-06405.herokuapp.com/";
 
 const cache = new InMemoryCache({
-  addTypename: false,
+  addTypename: true,
   resultCaching: false,
 });
 const client = new ApolloClient({

@@ -65,23 +65,28 @@ export const GET_BOOK_QUERY = gql`
     }
   }
 `;
-
-export const GET_AUTHOR_QUERY = gql`
-  query GetAuthor($authorId: ID!) {
-    author(id: $authorId) {
-      id
-      name
-      bio
-      photo {
-        url
-      }
-      books {
-        __typename
-        ...bookFields
-      }
+const AUTHOR_DETAILS_FIELDS_FRAGMENT = gql`
+  fragment authorDetailFields on Author {
+    id
+    name
+    bio
+    photo {
+      url
+    }
+    books {
+      __typename
+      ...bookFields
     }
   }
   ${BOOK_FIELDS_FRAGMENT}
+`;
+export const GET_AUTHOR_QUERY = gql`
+  query GetAuthor($authorId: ID!) {
+    author(id: $authorId) {
+      ...authorDetailFields
+    }
+  }
+  ${AUTHOR_DETAILS_FIELDS_FRAGMENT}
 `;
 
 export const USERS_QUERY = gql`
