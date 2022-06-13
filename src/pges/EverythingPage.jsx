@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { Box, Typography } from "@mui/material";
 
 import NormalizedAnything, {
+  normalizeAnything,
   NORMALIZED_ANYTHING_FIELDS_FRAGMENT,
 } from "../conponents/NormalizedAnything";
 
@@ -24,13 +25,24 @@ const EverythingPage = () => {
   }
 
   const { everything } = data;
+  const normalizedEverything = everything.map(normalizeAnything);
   return (
-    <Box w="100%" bg="red.100" p={5}>
-      <Typography textAlign="center" color="red.500">
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      width="80%"
+      p={5}
+      bgcolor="pink"
+    >
+      <Typography textAlign="center" color="red">
         Warning! Admin area!
       </Typography>
-      {everything.map((anything) => (
-        <NormalizedAnything normalizedAnything={anything} />
+      {normalizedEverything.map((anything) => (
+        <NormalizedAnything
+          // key={normalizeAnything.id}
+          normalizedAnything={anything}
+        />
       ))}
     </Box>
   );

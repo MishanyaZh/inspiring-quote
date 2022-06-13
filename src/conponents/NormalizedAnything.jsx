@@ -1,16 +1,38 @@
 import { gql } from "@apollo/client";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+
+export const normalizeAnything = (anything) => ({
+  ...anything.nested,
+  ...anything,
+});
 
 export const NORMALIZED_ANYTHING_FIELDS_FRAGMENT = gql`
   fragment normalizedAnythingFields on Anything {
-    ... on Book {
-      title
-    }
     ... on Author {
+      id
       name
+      info: bio
+      img: photo {
+        url
+      }
+    }
+    ... on Book {
+      id
+      name: title
+      info: description
+      img: cover {
+        url
+      }
     }
     ... on User {
+      id
       name
+      info
+      nested: avatar {
+        img: image {
+          url
+        }
+      }
     }
   }
 `;
@@ -21,42 +43,47 @@ const COLORS_BY_TYPENAME = {
   User: "blue",
 };
 
-const NormalizedAnything = ({ normalizedAnything }) => {
+const NormalizedAnything = ({ normalizedAnything, index }) => {
   return (
-    <Stack
-      width="100%"
-      m={3}
-      bgcolor={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
-      p={3}
+    <Box
+      key={index}
+      display="flex"
+      alignItems="center"
+      width="80%"
+      m={2}
+      p={2}
       overflow="hidden"
-      rounded={5}
+      bgcolor={COLORS_BY_TYPENAME[normalizedAnything.__typename]}
+      borderRadius="5px"
     >
-      <Stack isInline>
-        <img
-          size="100px"
-          rounded={5}
-          objectFit="cover"
-          src={normalizedAnything.img && normalizedAnything.img.url}
-          alt="#"
-        />
-        <Stack>
-          <Typography variant="h4" size="sm">
-            {normalizedAnything.__typename}
-          </Typography>
-          <Typography variant="h3" size="md">
+      <Box display={"flex"} flexDirection={"row"}>
+        <Box>
+          <img
+            width="100px"
+            objectfit="cover"
+            src={normalizedAnything.img && normalizedAnything.img.url}
+            alt="#"
+          />
+        </Box>
+        <Box>
+          <Typography variant="h6">{normalizedAnything.__typename}</Typography>
+          <Typography variant="h4" component="h4">
             {normalizedAnything.name}
           </Typography>
-          <Box
-            width="300px"
+          <Typography
+            ml={1}
+            variant="h5"
+            as="h5"
+            maxWidth="600px"
             whiteSpace="nowrap"
             overflow="hidden"
             textOverflow="ellipsis"
           >
             {normalizedAnything.info}
-          </Box>
-        </Stack>
-      </Stack>
-    </Stack>
+          </Typography>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
