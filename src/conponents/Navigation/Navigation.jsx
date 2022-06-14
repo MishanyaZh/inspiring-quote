@@ -12,7 +12,7 @@ const Navigation = () => {
   return (
     <>
       <Box sx={{ textAlign: "center" }}>
-        <Link to="/books" underline="none" color="inherit">
+        <Link to="/books/search/" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Books"
