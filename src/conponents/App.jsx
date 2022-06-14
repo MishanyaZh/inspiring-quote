@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import HomePage from "../pges/HomePage";
 import AuthorsPage from "../pges/AuthorsPage";
 import UsersPage from "../pges/UsersPage";
@@ -27,21 +26,16 @@ function App() {
       </Link>
 
       <Navigation />
-
       <Box
         sx={{
           textAlign: "center",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap",
         }}
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
 
-          <Route path="books/" element={<BooksPage />} />
+          <Route path="books/search/:searchQuery" element={<BooksPage />} />
+          <Route path="books/search/" element={<BooksPage />} />
           <Route path="books/:bookId" element={<BookDetailsPage />} />
 
           <Route path="authors/" element={<AuthorsPage />} />
