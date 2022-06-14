@@ -1,10 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
-import { useParams } from "react-router";
 import Book, { BOOK_FIELDS_FRAGMENT } from "../conponents/Book/Book";
 import Link from "../conponents/Link";
 import SearchBox from "./SearchBox";
+import { useSearchQuery } from "../conponents/SearchBox";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
 
 export const GET_ALL_BOOKS_QUERY = gql`
   query GetBooks($searchQuery: String!) {
@@ -16,8 +15,9 @@ export const GET_ALL_BOOKS_QUERY = gql`
 `;
 
 const BooksPage = () => {
-  const navigate = useNavigate();
-  const { searchQuery = "" } = useParams();
+  const [searchQuery, handleSearchQueryChange] =
+    useSearchQuery("/books/search/");
+
   const { loading, error, data } = useQuery(GET_ALL_BOOKS_QUERY, {
     variables: { searchQuery },
   });
@@ -35,9 +35,7 @@ const BooksPage = () => {
       <div>
         <SearchBox
           searchQuery={searchQuery}
-          onSearchQueryChange={(newSearchQuery) =>
-            navigate(`/books/search/${encodeURIComponent(newSearchQuery)}`)
-          }
+          onSearchQueryChange={handleSearchQueryChange}
         />
       </div>
       <Box

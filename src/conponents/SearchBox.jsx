@@ -4,6 +4,17 @@ import Input from "@mui/material/Input";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 
+import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
+
+export function useSearchQuery(baseSearchPath) {
+  const { searchQuery = "" } = useParams();
+  const navigate = useNavigate();
+  const handleSearchQueryChange = (newSearchQuery) =>
+    navigate(`${baseSearchPath}${encodeURIComponent(newSearchQuery)}`);
+  return [searchQuery, handleSearchQueryChange];
+}
+
 const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
   const [searchQueryDraft, setSearchQueryDraft] = useState(searchQuery);
   const [editing, setEditing] = useState(false);
