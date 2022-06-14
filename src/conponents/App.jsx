@@ -44,6 +44,8 @@ function App() {
           <Route path="authors/:authorId" element={<AuthorDetailsPage />} />
 
           <Route path="users/" element={<UsersPage />} />
+          <Route path="users/search/:searchQuery" element={<UsersPage />} />
+          <Route path="users/search/" element={<UsersPage />} />
           <Route path="users/:userId" element={<UserDetailsPage />} />
 
           <Route

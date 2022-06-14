@@ -5,9 +5,12 @@ import Box from "@mui/material/Box";
 import { gql, useQuery } from "@apollo/client";
 import { USER_FIELDS_FRAGMENT } from "../conponents/User/User";
 
+import SearchBox from "./SearchBox";
+import { useSearchQuery } from "../conponents/SearchBox";
+
 const ALL_USERS_QUERY = gql`
-  query AllUsers {
-    users {
+  query AllUsers($searchQuery: String!) {
+    users(searchQuery: $searchQuery) {
       ...userFieldsFragment
     }
   }
@@ -15,7 +18,13 @@ const ALL_USERS_QUERY = gql`
 `;
 
 function UsersPage() {
-  const { loading, error, data } = useQuery(ALL_USERS_QUERY);
+  const [searchQuery, handleSearchQueryChange] =
+    useSearchQuery("/users/search/");
+
+  const { loading, error, data } = useQuery(ALL_USERS_QUERY, {
+    variables: { searchQuery },
+  });
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -24,27 +33,39 @@ function UsersPage() {
   }
   const { users } = data;
 
+  const hasUsers = users.length > 0;
+
   return (
-    <Box
-      sx={{
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-      }}
-    >
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        users.map((user) => (
-          <Link key={user.id} to={`/users/${user.id}`}>
-            <User user={user} />
-          </Link>
-        ))
-      )}
-    </Box>
+    <>
+      <div>
+        <SearchBox
+          searchQuery={searchQuery}
+          onSearchQueryChange={handleSearchQueryChange}
+        />
+      </div>
+      <Box
+        sx={{
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {loading ? (
+          <p>Loading...</p>
+        ) : hasUsers ? (
+          users.map((user) => (
+            <Link key={user.id} to={`/users/${user.id}`}>
+              <User user={user} />
+            </Link>
+          ))
+        ) : (
+          <p>Users no found</p>
+        )}
+      </Box>
+    </>
   );
 }
 

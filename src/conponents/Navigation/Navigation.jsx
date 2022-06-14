@@ -26,7 +26,7 @@ const Navigation = () => {
             icon={<EmojiObjectsIcon />}
           />
         </Link>
-        <Link to="/users" underline="none" color="inherit">
+        <Link to="/users/search/" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Users"
