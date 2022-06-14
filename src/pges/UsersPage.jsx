@@ -1,5 +1,6 @@
 import User from "../conponents/User/User";
 import Link from "../conponents/Link";
+import Box from "@mui/material/Box";
 
 import { gql, useQuery } from "@apollo/client";
 import { USER_FIELDS_FRAGMENT } from "../conponents/User/User";
@@ -24,7 +25,16 @@ function UsersPage() {
   const { users } = data;
 
   return (
-    <>
+    <Box
+      sx={{
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}
+    >
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -34,7 +44,7 @@ function UsersPage() {
           </Link>
         ))
       )}
-    </>
+    </Box>
   );
 }
 

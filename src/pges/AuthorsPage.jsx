@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import Author, { AUTHORS_FIELDS_FRAGMENT } from "../conponents/Author/Author";
 import Link from "../conponents/Link";
+import Box from "@mui/material/Box";
 
 const GET_AUTHORS_QUERY = gql`
   query GetAuthors {
@@ -20,9 +21,17 @@ const AuthorsPage = () => {
     return <p>Could not load authors...</p>;
   }
   const { authors } = data;
-  console.log(authors);
   return (
-    <>
+    <Box
+      sx={{
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}
+    >
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -32,7 +41,7 @@ const AuthorsPage = () => {
           </Link>
         ))
       )}
-    </>
+    </Box>
   );
 };
 export default AuthorsPage;

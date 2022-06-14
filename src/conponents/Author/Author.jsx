@@ -13,7 +13,6 @@ export const AUTHORS_FIELDS_FRAGMENT = gql`
 `;
 
 const Author = ({ id, name, photo }) => {
-  console.log(photo);
   return (
     <Box
       m={2}
