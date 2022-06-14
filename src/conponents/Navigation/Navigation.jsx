@@ -19,7 +19,7 @@ const Navigation = () => {
             icon={<MenuBookIcon />}
           />
         </Link>
-        <Link to="/authors" underline="none" color="inherit">
+        <Link to="/authors/search/" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel
             label="Authors"

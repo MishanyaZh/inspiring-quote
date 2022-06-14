@@ -39,8 +39,8 @@ function App() {
           <Route path="books/:bookId" element={<BookDetailsPage />} />
 
           <Route path="authors/" element={<AuthorsPage />} />
-          <Route path="authors/search" element={<AuthorsPage />} />
           <Route path="authors/search/:searchQuery" element={<AuthorsPage />} />
+          <Route path="/authors/search/" element={<AuthorsPage />} />
           <Route path="authors/:authorId" element={<AuthorDetailsPage />} />
 
           <Route path="users/" element={<UsersPage />} />
