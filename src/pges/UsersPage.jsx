@@ -1,12 +1,9 @@
+import { gql, useQuery } from "@apollo/client";
 import User from "../conponents/User/User";
 import Link from "../conponents/Link";
-import Box from "@mui/material/Box";
-
-import { gql, useQuery } from "@apollo/client";
 import { USER_FIELDS_FRAGMENT } from "../conponents/User/User";
-
-import SearchBox from "./SearchBox";
-import { useSearchQuery } from "../conponents/SearchBox";
+import SearchBox, { useSearchQuery } from "../conponents/SearchBox";
+import Box from "@mui/material/Box";
 
 const ALL_USERS_QUERY = gql`
   query AllUsers($searchQuery: String!) {

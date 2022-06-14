@@ -1,4 +1,5 @@
-import React from "react";
+import Link from "../Link";
+
 import Box from "@mui/material/Box";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -6,12 +7,17 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 import styled from "@emotion/styled";
 
-import Link from "../Link";
-
 const Navigation = () => {
   return (
     <>
-      <Box sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          width: "310px",
+          display: "flex",
+          justifyContent: "space-evenly",
+          margin: "0 auto",
+        }}
+      >
         <Link to="/books/search/" underline="none" color="inherit">
           <BottomNavigationActionStyled
             showLabel

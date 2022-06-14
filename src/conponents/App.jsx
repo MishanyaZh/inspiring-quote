@@ -1,20 +1,22 @@
 import { Routes, Route } from "react-router-dom";
+
 import HomePage from "../pges/HomePage";
 import AuthorsPage from "../pges/AuthorsPage";
 import UsersPage from "../pges/UsersPage";
 import BooksPage from "../pges/BooksPage";
+
 import Navigation from "./Navigation/Navigation";
 import Link from "./Link";
-
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 
 import AuthorDetailsPage from "../pges/AuthorDetailsPage";
 import BookDetailsPage from "../pges/BookDetailsPage";
 import UserDetailsPage from "../pges/UserDetailsPage";
 import AnythingDetailsPage from "../pges/AnythingDetailsPage";
 import EverythingPage from "../pges/EverythingPage";
+
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 function App() {
   return (
@@ -24,7 +26,6 @@ function App() {
           Personal Library
         </Typography>
       </Link>
-
       <Navigation />
       <Box
         sx={{

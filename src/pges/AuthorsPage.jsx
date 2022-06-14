@@ -1,9 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import Author, { AUTHORS_FIELDS_FRAGMENT } from "../conponents/Author/Author";
+import SearchBox, { useSearchQuery } from "../conponents/SearchBox";
 import Link from "../conponents/Link";
 import Box from "@mui/material/Box";
-import SearchBox from "./SearchBox";
-import { useSearchQuery } from "../conponents/SearchBox";
 
 const GET_AUTHORS_QUERY = gql`
   query GetAuthors($searchQuery: String!) {

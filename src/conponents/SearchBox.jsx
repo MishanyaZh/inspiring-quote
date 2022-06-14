@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
-import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
+
+import Stack from "@mui/material/Stack";
+import Input from "@mui/material/Input";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
+import EditIcon from "@mui/icons-material/Edit";
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 
 export function useSearchQuery(baseSearchPath) {
   const { searchQuery = "" } = useParams();
@@ -15,7 +19,7 @@ export function useSearchQuery(baseSearchPath) {
   return [searchQuery, handleSearchQueryChange];
 }
 
-const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
+export default function SearchBox({ searchQuery, onSearchQueryChange }) {
   const [searchQueryDraft, setSearchQueryDraft] = useState(searchQuery);
   const [editing, setEditing] = useState(false);
   const hasQuery = searchQueryDraft.length > 0;
@@ -34,14 +38,19 @@ const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
         onSearchQueryChange(searchQueryDraft);
       }}
     >
-      <Stack isInline align="center" justify="center">
+      <Stack
+        m={2}
+        direction="row"
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
         {editing ? (
           <Input
             value={searchQueryDraft}
             onChange={(e) => setSearchQueryDraft(e.target.value)}
           />
         ) : (
-          <InputLabel>{message}</InputLabel>
+          <Typography color="darkgrey">{message}</Typography>
         )}
         {showSearchButton && (
           <IconButton
@@ -49,17 +58,20 @@ const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
               setEditing(false);
               onSearchQueryChange(searchQueryDraft);
             }}
-            icon="search"
-          />
+            size="large"
+          >
+            <ManageSearchIcon color="info" />
+          </IconButton>
         )}
         {showEditButton && (
           <IconButton
-            key="edit"
-            icon="edit"
             onClick={() => {
               setEditing(true);
             }}
-          />
+            size="large"
+          >
+            <EditIcon color="primary" key="edit" />
+          </IconButton>
         )}
         {showCancelButton && (
           <IconButton
@@ -67,8 +79,10 @@ const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
               setEditing(false);
               setSearchQueryDraft(searchQuery);
             }}
-            icon="close"
-          />
+            size="large"
+          >
+            <CloseIcon color="warning" />
+          </IconButton>
         )}
         {showDeleteButton && (
           <IconButton
@@ -77,12 +91,12 @@ const SearchBox = ({ searchQuery, onSearchQueryChange }) => {
               setSearchQueryDraft("");
               onSearchQueryChange("");
             }}
-            icon="delete"
-          />
+            size="large"
+          >
+            <DeleteIcon color="error" />
+          </IconButton>
         )}
       </Stack>
     </form>
   );
-};
-
-export default SearchBox;
+}

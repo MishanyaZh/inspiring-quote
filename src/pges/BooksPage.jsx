@@ -1,8 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import Book, { BOOK_FIELDS_FRAGMENT } from "../conponents/Book/Book";
 import Link from "../conponents/Link";
-import SearchBox from "./SearchBox";
-import { useSearchQuery } from "../conponents/SearchBox";
+import SearchBox, { useSearchQuery } from "../conponents/SearchBox";
 import Box from "@mui/material/Box";
 
 export const GET_ALL_BOOKS_QUERY = gql`
